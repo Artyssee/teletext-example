@@ -9,52 +9,24 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "tailwindcss": "^2.0.2",
     "vue": "^3.0.0",
-    "vue-router": "^3.4.9"
+    "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss7-compat": "^2.0.2",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
-    "autoprefixer": "^9.8.6",
-    "babel-eslint": "^10.1.0",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "@vue/eslint-config-typescript": "^5.0.2",
     "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^7.0.0-0",
-    "postcss": "^7.0.35",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/strongly-recommended",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {
-      "vue/attributes-order": "error",
-      "vue/block-tag-newline": "error",
-      "vue/component-definition-name-casing": "error",
-      "vue/component-name-in-template-casing": "error",
-      "vue/component-tags-order": "error",
-      "vue/custom-event-name-casing": "error",
-      "vue/html-closing-bracket-newline": "error",
-      "vue/html-indent": "error",
-      "vue/order-in-components": "error",
-      "vue/padding-line-between-blocks": "error",
-      "vue/multiline-html-element-content-newline": "error",
-      "vue/singleline-html-element-content-newline": "error"
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "typescript": "~3.9.3"
+  }
 }
