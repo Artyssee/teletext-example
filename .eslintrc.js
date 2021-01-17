@@ -34,5 +34,7 @@ module.exports = {
 		'vue/singleline-html-element-content-newline': 'error',
 		'no-tabs': 0,
 		indent: ['error', 'tab'],
+		// Max len should be turned off because you assign classes trough tailwind.css. If you start working with bem turn rule back on
+		'max-len': 'off',
 	},
 };
