@@ -2,7 +2,7 @@
 	<!-- This example requires Tailwind CSS v2.0+ -->
 	<div class="userContainer">
 		<div class="userContainerWrapper">
-			<h3 class="userContainerWrapper__heading text-gray-900">
+			<h3 class="userContainerWrapper__heading">
 				Example Tailwind.css using tailwind.classes
 			</h3>
 			<p class="userContainerWrapper__text userContainerWrapper__text--gray">
@@ -20,8 +20,7 @@ export default {
 
 <style lang="scss" scoped>
 	.userContainer {
-		@apply shadow;
-		@apply overflow-hidden;
+		@apply shadow overflow-hidden;
 
 		@screen sm {
 			@apply rounded-lg;
@@ -33,20 +32,14 @@ export default {
 	}
 
 	.userContainerWrapper {
-		@apply px-4;
-		@apply py-5;
+		@apply px-4 py-5;
 
 		&__heading {
-			@apply text-lg;
-			@apply leading-6;
-			@apply font-medium;
-			@apply text-gray-900;
+			@apply text-lg leading-6 font-medium text-gray-900;
 		}
 
 		&__text {
-			@apply mt-1;
-			@apply max-w-2xl;
-			@apply text-sm;
+			@apply mt-1 max-w-2xl text-sm;
 
 			&--gray {
 				@apply text-gray-500;
