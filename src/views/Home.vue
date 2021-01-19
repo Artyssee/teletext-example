@@ -1,18 +1,47 @@
 <template>
 	<div class="home">
-		<img alt="Vue logo" src="../assets/logo.png">
-		<HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+		<div class="bg-gray-50 w-full h-screen flex flex-col">
+			<div class="overflow-auto bg-gray-800 h-full">
+				<!-- TODO: review ParentNode issue and check how to individual modal -->
+				<ShowItems
+					:data="state.filteredSeries.length ? state.filteredSeries : state.allSeries"
+					:type="state.filteredSeries.length ? 'filtered' : 'unfiltered'"
+				/>
+			</div>
+		</div>
 	</div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import { defineComponent, onMounted, reactive } from 'vue';
+import ShowItems from '@/components/ShowItems.vue';
+// import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 
 export default defineComponent({
 	name: 'Home',
 	components: {
-		HelloWorld,
+		ShowItems,
+	},
+	setup() {
+		const state = reactive({
+			allSeries: [],
+			filteredSeries: [],
+		});
+
+		async function fetchAllSeries() {
+			const fetchSeries = await fetch('http://api.tvmaze.com/shows?page=1');
+			const jsonResponse = await fetchSeries.json();
+
+			state.allSeries = jsonResponse;
+		}
+
+		onMounted(() => {
+			fetchAllSeries();
+		});
+
+		return {
+			state,
+		};
 	},
 });
 </script>
