@@ -15,7 +15,6 @@
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from 'vue';
 import ShowItems from '@/components/ShowItems.vue';
-// import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 
 export default defineComponent({
 	name: 'Home',
