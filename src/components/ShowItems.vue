@@ -19,7 +19,7 @@
 				<img
 					v-else
 					class="rounded"
-					src=""
+					src="../assets/series-placholder.jpg"
 				/>
 				<p class="truncate w-40 text-gray-50">
 					{{ series.name || series.show.name }}

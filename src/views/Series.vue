@@ -132,7 +132,6 @@ export default {
 		function fetchSingleSeries() {
 			fetch(`http://api.tvmaze.com/shows/${props.id}`)
 				.then((res) => res.json())
-				// .then((res) => console.log('res', res))
 				.then((res) => {
 					state.indivudalSeries = res;
 				});
