@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-wrap justify-center my-4">
+	<div v-if="data.length" class="flex flex-wrap justify-center my-4">
 		<div
 			v-for="series in data"
 			:key="series.id"
@@ -19,7 +19,7 @@
 				<img
 					v-else
 					class="rounded"
-					src=""
+					src="../assets/series-placholder.jpg"
 				/>
 				<p class="truncate w-40 text-gray-50">
 					{{ series.name || series.show.name }}
@@ -27,10 +27,27 @@
 			</router-link>
 		</div>
 	</div>
+	<div v-else class="flex flex-wrap justify-center my-4">
+		<div
+			v-for="index in state.placeHolder"
+			:key="index"
+			class="flex-initial mx-4 my-4 cursor-pointer animate-pulse"
+		>
+			<div class="text-left">
+				<img
+					class="rounded"
+					src="../assets/series-placholder.jpg"
+				/>
+				<p class="truncate w-40 text-gray-50">
+					Loading...
+				</p>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, reactive } from 'vue';
 
 export default defineComponent({
 	name: 'ShowItems',
@@ -45,6 +62,13 @@ export default defineComponent({
 			type: String,
 			default: '',
 		},
+	},
+	setup() {
+		const state = reactive({
+			placeHolder: 12,
+		});
+
+		return { state };
 	},
 });
 </script>
