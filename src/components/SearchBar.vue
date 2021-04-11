@@ -1,7 +1,7 @@
 <template>
 	<div class="w-full h-56 bg-indigo-900">
 		<div class="w-full flex flex-col items-center pt-2 pb-2">
-			<h1 class="text-3xl text-center sm:text-4xl text-gray-50">
+			<h1 class="text-3xl text-center sm:text-2xl md:text-4xl text-gray-50">
 				Look for your favorite series here
 			</h1>
 			<input
@@ -21,6 +21,7 @@
 
 <script>
 import { reactive } from 'vue';
+import debounce from '@/globals/functions';
 
 export default {
 	name: 'SearchBar',
@@ -79,13 +80,11 @@ export default {
 			context.emit('filtered-data', state.foundResults);
 		};
 
-		const filterData = () => {
-			setTimeout(() => {
-				fetch(`${props.api}${state.searchQuery}`)
-					.then((response) => response.json())
-					.then((data) => handleSearchResults(data));
-			}, 1200);
-		};
+		const filterData = debounce(() => {
+			fetch(`${props.api}${state.searchQuery}`)
+				.then((response) => response.json())
+				.then((data) => handleSearchResults(data));
+		}, 1200);
 
 		const checkBorderStatus = () => {
 			if (state.searchStatus === 'no_results') {

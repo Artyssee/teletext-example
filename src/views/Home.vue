@@ -7,9 +7,8 @@
 					:data="state.allSeries"
 					@filtered-data="toggleSearched"
 				/>
-				<!-- TODO: review ParentNode issue and check how to individual modal -->
 				<ShowItems
-					:data="state.filteredSeries.length ? state.filteredSeries : state.allSeries"
+					:data="state.filteredSeries.length > 0 ? state.filteredSeries : state.allSeries"
 					:type="state.filteredSeries.length ? 'filtered' : 'unfiltered'"
 				/>
 			</div>
@@ -19,6 +18,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from 'vue';
+import { SeriesStateInterface, ShowInterface } from '@/globals/interfaces/seriesInterfaces';
 import ShowItems from '@/components/ShowItems.vue';
 import SearchBar from '@/components/SearchBar.vue';
 
@@ -29,14 +29,14 @@ export default defineComponent({
 		SearchBar,
 	},
 	setup() {
-		const state = reactive({
+		const state: SeriesStateInterface = reactive({
 			allSeries: [],
 			filteredSeries: [],
 			filter: '',
 			api: 'http://api.tvmaze.com/search/shows?q=',
 		});
 
-		function toggleSearched(searchQuery: any) {
+		function toggleSearched(searchQuery: ShowInterface[]) {
 			state.filteredSeries = searchQuery;
 		}
 
